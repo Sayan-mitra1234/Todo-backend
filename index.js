@@ -1,18 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv').config();
+
 const cors = require('cors');
 
 const app = express();
 app.use(express.json());
-const PORT = process.env.PORT || 5000;
+
 
 app.use(cors());
 
 const TodoItemRoute = require('./routes/todo');
 
 
-mongoose.connect(process.env.DB_CONNECT)
+mongoose.connect("mongodb+srv://todo:todo@1234@todolist01.6cvqcmw.mongodb.net/?retryWrites=true&w=majority")
 .then(()=> console.log("Database connected"))
 .catch(err => console.log(err))
 
@@ -22,4 +22,4 @@ app.use('/', TodoItemRoute);
 
 
 //connect to server
-app.listen(PORT, ()=> console.log("Server connected to 5000") );
+app.listen(5000, ()=> console.log("Server connected to 5000") );
